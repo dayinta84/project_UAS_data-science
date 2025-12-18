@@ -1,158 +1,191 @@
-# 📊 Online Retail Customer Segmentation  
-**RFM Analysis, Clustering, and Deep Learning Autoencoder**
+# 🛒 Segmentasi Pelanggan E-Commerce Menggunakan RFM, Clustering, dan Deep Learning Autoencoder
+
+### 👤 Informasi Mahasiswa
+
+* **Nama:** Dayinta Ayu Faj’rin
+* **NIM:** 233307042
+* **Program Studi:** D-III Teknologi Informasi
+* **Mata Kuliah:** Data Science
+* **Dosen Pengampu:** Gus Nanang Syaifuddiin, S.Kom., M.Kom.
+* **Tahun Akademik:** 2025 / Semester 5
+* **Repo:** [MASUKKAN LINK REPOSITORY DISINI]
+* **Video:** [MASUKKAN LINK VIDEO PEMBAHASAN DISINI]
 
 ---
 
-## 👤 Informasi Proyek
-- **Nama Mahasiswa:** Dayinta Ayu Faj'rin  
-- **NIM:** 233307042
-- **Program Studi:** Teknologi Informasi 
-- **Mata Kuliah:** Data Science  
-- **Dosen Pengampu:** Gus Nanang Syaifuddin  
+### 1. 🎯 Ringkasan Proyek
 
-🔗 **GitHub Repository:** https://github.com/dayinta84/project_UAS_data-science.git
-🎥 **Video Pembahasan:** [ISI LINK VIDEO]
+Proyek ini bertujuan untuk melakukan segmentasi pelanggan pada dataset **Online Retail** menggunakan pendekatan analisis **RFM (Recency, Frequency, Monetary)**. Proyek ini membandingkan efektivitas tiga metode clustering: Baseline (K-Means), Advanced Machine Learning (Gaussian Mixture Model), dan Deep Learning (Autoencoder).
 
----
-
-## 🎯 Ringkasan Proyek
-Proyek ini bertujuan untuk melakukan **segmentasi pelanggan** pada dataset **Online Retail (UCI Machine Learning Repository)** menggunakan pendekatan **RFM (Recency, Frequency, Monetary)**.  
-Tiga model dikembangkan dan dibandingkan, yaitu:
-1. **K-Means Clustering** sebagai baseline
-2. **Gaussian Mixture Model (GMM)** sebagai model advanced
-3. **Autoencoder + K-Means** sebagai model deep learning (wajib)
-
-Evaluasi dilakukan menggunakan metrik clustering yang sesuai, yaitu **Silhouette Score**, **Davies-Bouldin Index**, dan **Calinski-Harabasz Index**.
+**Aktivitas Utama:**
+* Melakukan *data cleaning* dan preprocessing pada dataset transaksi retail yang besar.
+* Membangun fitur perilaku pelanggan menggunakan metode **RFM**.
+* Mengembangkan arsitektur **Autoencoder** untuk mempelajari fitur laten sebelum proses clustering.
+* Mengevaluasi model menggunakan metrik *Silhouette Score*, *Davies-Bouldin Index*, dan *Calinski-Harabasz Index*.
 
 ---
 
-## 📁 Struktur Folder
-Struktur repository disusun agar rapi dan mendukung reproducibility:
+### 2. 📄 Problem & Goals
 
-CS2025-main/
+**Latar Belakang & Masalah:**
+* Perusahaan retail online memiliki data transaksi besar namun belum dimanfaatkan optimal untuk memahami perilaku pelanggan.
+* Data transaksi memiliki isu kualitas (missing CustomerID, transaksi cancel, outliers) yang memerlukan pembersihan intensif.
+* Diperlukan metode segmentasi otomatis untuk mengidentifikasi pelanggan bernilai tinggi (*High Value*) dan pelanggan berisiko (*Churn*).
+
+**Goals:**
+1.  Melakukan pembersihan data dan membangun fitur pelanggan berbasis **RFM**.
+2.  Membangun 3 model segmentasi: **K-Means**, **GMM**, dan **Autoencoder + Clustering**.
+3.  Menemukan model terbaik berdasarkan metrik evaluasi clustering untuk menghasilkan *insight* bisnis yang akurat.
+
+---
+
+### 📁 Struktur Folder
+
+```text
+UAS_Ecommerce_Segmentation/
 │
 ├── data/
-│ ├── Online Retail.xlsx # Dataset (opsional, sumber asli via URL)
-│ └── .gitkeep
+│   └── Online Retail.xlsx         # Dataset Sumber (UCI)
 │
-├── notebooks/
-│ ├── UAS_Dayinta_dataScience.ipynb
-│ └── .gitkeep
+├── images/                        # Hasil Visualisasi & Evaluasi
+│   ├── EDA_Distribution.png
+│   ├── Elbow_Method.png
+│   ├── Cluster_Visualization.png
+│   └── Model_Comparison_Chart.png
 │
-├── models/
-│ ├── scaler.pkl # StandardScaler
-│ ├── kmeans_model.pkl # K-Means model
-│ ├── gmm_model.pkl # GMM model
-│ ├── autoencoder.h5 # Autoencoder (Deep Learning)
-│ ├── encoder.h5 # Encoder (Latent Space)
-│ └── .gitkeep
+├── models/                        # Model yang disimpan
+│   ├── kmeans_baseline.pkl
+│   ├── gmm_model.pkl
+│   ├── autoencoder_model.h5       # Model Deep Learning (Keras/Tensorflow)
+│   └── scaler.pkl                 # StandardScaler
 │
-├── images/
-│ ├── 1_kondisi_data.png
-│ ├── 2_eda_1.png
-│ ├── 3_eda_2.png
-│ ├── 4_eda_3.png
-│ ├── 5_data_cleaning.png
-│ ├── 6_feature_engineering.png
-│ ├── 7_data_transformation.png
-│ ├── 8_model_1.png
-│ ├── 9_model_2.png
-│ ├── 10_model_3.png
-│ ├── 11_training_model_3.png
-│ ├── 12_training_process.png
-│ └── 14_visualisasi_perbandingan.png
+├── notebooks/                     # Jupyter Notebook Utama
+│   └── UAS_DATA_SCIENCE_DAYINTA.ipynb
 │
-├── src/
-│ └── .gitkeep
-│
-├── requirements.txt
-├── README.md
-├── LICENSE
-└── Cheklist Submit.md
-
-
-
-📌 **Catatan:**  
-Dataset diunduh langsung dari URL UCI di dalam notebook untuk menjaga ukuran repository tetap kecil.
+├── requirements.txt               # Dependencies (Pandas, TensorFlow, Scikit-learn, dll)
+└── README.md
+```
 
 ---
 
-## 📊 Dataset
-- **Nama Dataset:** Online Retail
-- **Sumber:** UCI Machine Learning Repository  
-  https://archive.ics.uci.edu/ml/datasets/online+retail
-- **Tipe Data:** Tabular (Transaksi Retail)
-- **Jumlah Data:** ± 541.909 baris (sebelum cleaning)
-- **Periode:** Desember 2010 – Desember 2011
+### 3. 📊 Dataset & Data Understanding
+
+* **Sumber:** [UCI Machine Learning Repository - Online Retail](https://archive.ics.uci.edu/dataset/352/online+retail)
+* **Periode:** 01/12/2010 – 09/12/2011
+* **Jumlah Data Awal:** 541,909 baris
+
+**Fitur Utama:**
+
+| Nama Fitur | Tipe Data | Deskripsi |
+| :--- | :--- | :--- |
+| **InvoiceNo** | String | Nomor invoice (awalan 'C' = Cancel) |
+| **StockCode** | String | Kode produk |
+| **Description** | String | Nama produk |
+| **Quantity** | Integer | Jumlah item dibeli |
+| **InvoiceDate** | Datetime | Waktu transaksi |
+| **UnitPrice** | Float | Harga per unit (GBP) |
+| **CustomerID** | Integer | ID unik pelanggan |
+| **Country** | String | Negara asal pelanggan |
+
+**Kondisi Data:**
+* Terdapat *missing values* signifikan pada `CustomerID`.
+* Terdapat transaksi pembatalan (Cancel) dan nilai negatif pada `Quantity`/`UnitPrice`.
+* Distribusi data sangat *skewed* (timpang), didominasi oleh transaksi dari UK.
 
 ---
 
-## 🔧 Data Preparation
-Tahapan preprocessing yang dilakukan:
-1. **Data Cleaning**
-   - Menghapus missing CustomerID
-   - Menghapus transaksi cancel (InvoiceNo diawali “C”)
-   - Menghapus Quantity ≤ 0 dan UnitPrice ≤ 0
-2. **Feature Engineering**
-   - Membuat fitur **TotalPrice**
-   - Agregasi data pelanggan menggunakan **RFM**
-3. **Data Transformation**
-   - Standardisasi fitur RFM menggunakan **StandardScaler**
+### 4. 🔧 Data Preparation
+
+Langkah-langkah yang dilakukan dalam preprocessing:
+
+1.  **Data Cleaning:**
+    * Menghapus baris dengan `CustomerID` kosong karena fokus analisis adalah pelanggan.
+    * Menghapus transaksi pembatalan (`InvoiceNo` diawali 'C').
+    * Menghapus baris dengan `Quantity` ≤ 0 dan `UnitPrice` ≤ 0.
+    * Menghapus data duplikat.
+2.  **Feature Engineering (RFM):**
+    * **Recency:** Selisih hari antara tanggal terakhir dataset dan transaksi terakhir pelanggan.
+    * **Frequency:** Jumlah invoice unik per pelanggan.
+    * **Monetary:** Total nilai belanja (`Quantity` × `UnitPrice`).
+3.  **Scaling:**
+    * Menggunakan `StandardScaler` untuk menormalisasi fitur RFM agar memiliki skala yang seimbang untuk algoritma berbasis jarak.
 
 ---
 
-## 🤖 Modeling
-Tiga model yang digunakan dalam proyek ini:
+### 5. 🤖 Modeling
 
-### 🔹 Model 1 – K-Means (Baseline)
-- Algoritma clustering berbasis jarak
-- Cepat dan sederhana
-- Digunakan sebagai pembanding awal
+Tiga pendekatan model dikembangkan untuk perbandingan:
 
-### 🔹 Model 2 – Gaussian Mixture Model (Advanced)
-- Clustering berbasis probabilistik
-- Lebih fleksibel dibanding K-Means
-- Namun performa lebih rendah pada dataset ini
+**Model 1: K-Means Clustering (Baseline)**
+* Algoritma berbasis jarak yang membagi data ke dalam K cluster.
+* *Parameter:* `n_clusters=4`.
+* *Fungsi:* Sebagai tolok ukur (baseline) performa.
 
-### 🔹 Model 3 – Autoencoder + K-Means (Deep Learning)
-- Autoencoder mempelajari **latent representation**
-- Clustering dilakukan pada latent space
-- Memberikan struktur cluster terbaik
+**Model 2: Gaussian Mixture Model (Advanced)**
+* Algoritma probabilistik yang mengasumsikan data berasal dari campuran distribusi Gaussian.
+* *Parameter:* `n_components=4`.
+* *Fungsi:* Menangkap bentuk cluster yang lebih fleksibel.
 
----
-
-## 🧪 Evaluation
-Metrik evaluasi yang digunakan:
-- **Silhouette Score**
-- **Davies-Bouldin Index**
-- **Calinski-Harabasz Index**
-
-| Model | Silhouette | Davies-Bouldin | Calinski-Harabasz |
-|------|-----------|----------------|------------------|
-| K-Means | 0.616 | 0.754 | 3145 |
-| GMM | 0.163 | 1.620 | 895 |
-| Autoencoder + K-Means | 0.570 | **0.618** | **4172** |
-
-📌 **Model terbaik:** **Autoencoder + K-Means**
+**Model 3: Deep Learning (Autoencoder + K-Means)**
+* Menggunakan **Autoencoder** untuk kompresi data dan mempelajari fitur laten (tersembunyi) sebelum di-cluster.
+* *Arsitektur:* Input (3) → Encoder (8, 2) → Decoder (8, 3).
+* *Training:* Optimizer Adam, Loss MSE, Epochs 50 (dengan EarlyStopping).
+* *Fungsi:* Menangani kompleksitas data dan menghasilkan representasi fitur yang lebih informatif.
 
 ---
 
-## 💾 Model Artifacts
-Seluruh model yang telah dilatih disimpan dalam folder `models/`:
-- `.pkl` → model machine learning & scaler
-- `.h5` → model deep learning (TensorFlow/Keras)
+### 6. 🧪 Evaluation Results
 
-Hal ini mendukung **reproducibility** dan penggunaan ulang model tanpa training ulang.
+Evaluasi dilakukan menggunakan tiga metrik utama:
+
+| Model | Silhouette Score | Davies-Bouldin Index (Lower is Better) | Calinski-Harabasz Index (Higher is Better) |
+| :--- | :--- | :--- | :--- |
+| **K-Means (Baseline)** | **0.616** | 0.754 | 3145.06 |
+| **GMM (Advanced)** | 0.163 | 1.620 | 894.83 |
+| **Autoencoder + K-Means** | 0.570 | **0.618** | **4172.64** |
+
+**Analisis Hasil:**
+* **Model Terbaik:** **Autoencoder + K-Means**.
+* **Alasan:** Model ini menghasilkan **Davies-Bouldin Index terendah** (0.618) dan **Calinski-Harabasz Index tertinggi** (4172.64). Hal ini menunjukkan bahwa penggunaan Deep Learning berhasil membentuk struktur cluster yang paling terpisah dengan jelas dan padat dibandingkan metode konvensional.
 
 ---
 
-## 🔁 Reproducibility
+### 7. 🏁 Kesimpulan & Business Insight
 
-### Menjalankan di Google Colab
-- Buka notebook di folder `notebooks/`
-- Jalankan seluruh cell dari atas ke bawah
+**Kesimpulan:**
+Integrasi **Deep Learning (Autoencoder)** terbukti meningkatkan kualitas segmentasi dibandingkan metode tradisional pada dataset ini. Representasi fitur laten membantu algoritma memisahkan karakteristik pelanggan dengan lebih tegas.
 
-### Menjalankan di Lokal
-```bash
-pip install -r requirements.txt
-jupyter notebook
+**Key Insights:**
+1.  **Pelanggan Bernilai Rendah:** Mayoritas transaksi berasal dari pelanggan dengan frekuensi rendah dan nilai belanja kecil.
+2.  **Potensi Loyal:** Teridentifikasi kelompok pelanggan dengan frekuensi tinggi dan nilai belanja besar yang harus menjadi prioritas strategi retensi.
+3.  **Efektivitas Deep Learning:** Autoencoder mampu mempelajari representasi fitur yang lebih optimal dibanding fitur RFM mentah.
+
+---
+
+### 8. 🔮 Future Work
+
+* **Data:** Menambah variasi data atau fitur baru seperti *Customer Tenure*.
+* **Model:** Mencoba arsitektur Deep Learning yang lebih kompleks atau melakukan *Hyperparameter Tuning* yang lebih ekstensif.
+* **Deployment:** Mengembangkan API menggunakan Flask/FastAPI atau dashboard interaktif.
+
+---
+
+### 9. 🔁 Reproducibility
+
+Untuk menjalankan proyek ini di lokal komputer Anda:
+
+1.  **Clone Repository:**
+    ```bash
+    git clone [MASUKKAN LINK REPO ANDA]
+    ```
+
+2.  **Install Dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3.  **Jalankan Notebook:**
+    Buka `notebooks/UAS_DATA_SCIENCE_DAYINTA.ipynb` menggunakan Jupyter Notebook atau Google Colab.
+
+---
+Created by Dayinta Ayu Faj’rin © 2025
