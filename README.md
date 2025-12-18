@@ -8,8 +8,8 @@
 * **Mata Kuliah:** Data Science
 * **Dosen Pengampu:** Gus Nanang Syaifuddiin, S.Kom., M.Kom.
 * **Tahun Akademik:** 2025 / Semester 5
-* **Repo:** [MASUKKAN LINK REPOSITORY DISINI]
-* **Video:** [MASUKKAN LINK VIDEO PEMBAHASAN DISINI]
+* **Repo:** (https://github.com/dayinta84/project_UAS_data-science.git)
+* **Video:** https://drive.google.com/file/d/164qatlW8iDpALv_4J22cjZ7tBAWfPvru/view?usp=drive_link 
 
 ---
 
@@ -176,7 +176,7 @@ Untuk menjalankan proyek ini di lokal komputer Anda:
 
 1.  **Clone Repository:**
     ```bash
-    git clone [MASUKKAN LINK REPO ANDA]
+    git clone https://github.com/dayinta84/project_UAS_data-science.git
     ```
 
 2.  **Install Dependencies:**
@@ -189,3 +189,4 @@ Untuk menjalankan proyek ini di lokal komputer Anda:
 
 ---
 Created by Dayinta Ayu Faj’rin © 2025
+
