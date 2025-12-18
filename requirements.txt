@@ -1,0 +1,8 @@
+numpy
+pandas
+scikit-learn
+Matplotlib
+Seaborn
+TensorFlow
+Requests
+openpyxl
